@@ -7,7 +7,6 @@ import TableHOC from "../components/admin/TableHOC";
 import { Skeleton } from "../components/leader";
 import { useMyOrdersQuery } from "../redux/api/orderApi";
 import { CustomError } from "../types/api-types";
-import { userReducerInitialState } from "../types/reducer-types";
 import { RootState } from "../redux/store";
 
 type DataType = {

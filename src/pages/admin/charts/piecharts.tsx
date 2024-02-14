@@ -15,7 +15,7 @@ const PieCharts = () => {
   const categories = data?.charts.productCategories!;
   const stock = data?.charts.stockAvailablity!;
   const revenue = data?.charts.revenueDistribution!;
-  const ageGroup = data?.charts.usersAgeGroup;
+  const ageGroup = data?.charts.usersAgeGroup!;
   const adminCustomer = data?.charts.adminCustomer!;
 
   if (isError) return <Navigate to={"/admin/dashboard"} />;
@@ -116,7 +116,7 @@ const PieCharts = () => {
                     "Adult (20-40)",
                     "Older (above 40)",
                   ]}
-                  data={[ageGroup?.teen, ageGroup.adult, ageGroup.old]}
+                  data={[ageGroup.teen, ageGroup.adult, ageGroup.old]}
                   backgroundColor={[
                     `hsl(10, ${80}%, 80%)`,
                     `hsl(10, ${80}%, 50%)`,

@@ -103,6 +103,9 @@ type stockAvailablity = {
 }
 
 type UsersAgeGroup = {
+    teen: number;
+    adult: number;
+    old: number;
     inStock: number;
     outOfStock: number;
 }
