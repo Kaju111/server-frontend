@@ -6,6 +6,9 @@ import { auth } from "../firebase"
 import { useLoginMutation } from "../redux/api/userAPI"
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import { MessageResponse } from "../types/api-types"
+import { useDispatch } from "react-redux"
+import { userExits, userNotExits } from "../redux/reducer/userReducer"
+import { getUser } from "../redux/api/userAPI"
 
 const Login = () => {
 
@@ -13,6 +16,8 @@ const Login = () => {
     const [date, setDate] = useState("")
 
     const [login] = useLoginMutation()
+
+    const dispatch = useDispatch()
 
     const loginHandler = async () => {
         try {
@@ -32,10 +37,13 @@ const Login = () => {
             })
 
             if ("data" in res) {
+                const data = await getUser(user.uid)
+                dispatch(userExits(data.user))
                 toast.success(res.data.message)
             } else {
                 const error = res.error as FetchBaseQueryError;
                 const message = error.data as MessageResponse;
+                dispatch(userNotExits())
                 toast.error(message.message)
             }
 

@@ -8,10 +8,10 @@ import { saveShippingInfo } from "../redux/reducer/cartReducer"
 import { RootState, server } from "../redux/store"
 
 const Shipping = () => {
-
     const { cartItems, total } = useSelector(
         (state: RootState) => state.cartReducer
     );
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -120,4 +120,5 @@ const Shipping = () => {
         </div>
     );
 };
+
 export default Shipping
